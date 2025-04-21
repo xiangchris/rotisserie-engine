@@ -474,6 +474,3 @@ xcuserdata/
 *.out
 *.app
 sdl_user_input.txt
-
-# ImGUI
-imgui.ini
