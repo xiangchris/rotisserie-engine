@@ -4,6 +4,7 @@
 
 void TemplateDB::LoadAll()
 {
+    template_map.clear();
     const std::string directory_path = "resources/actor_templates";
     if (std::filesystem::exists(directory_path))
     {

@@ -314,6 +314,7 @@ void EditorManager::ShowPlayPauseStepButtons()
             start_scene = SceneDB::GetCurrent();
             ComponentDB::ResetDatabase();
             ComponentManager::Init();
+            TemplateDB::LoadAll();
             SceneDB::RestartScene();
             SceneDB::LoadScene(start_scene);
         }
