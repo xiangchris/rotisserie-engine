@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\lua">
+      <UniqueIdentifier>{8562cf50-46e8-4c7c-af19-b8380f22621d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\box2d">
+      <UniqueIdentifier>{22bec1d7-e3ab-4ed7-9ae9-c64e504907f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\imgui">
+      <UniqueIdentifier>{4dab670d-4dbb-45fb-ab59-860d820d029e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\first_party\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\SceneDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\Actor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\TemplateDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\ImageDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\TextDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\AudioDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lapi.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lauxlib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lbaselib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lcode.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lcorolib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lctype.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\ldblib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\ldebug.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\ldo.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\ldump.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lfunc.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lgc.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\linit.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\liolib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\llex.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lmathlib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lmem.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\loadlib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lobject.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lopcodes.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\loslib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lparser.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lstate.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lstring.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lstrlib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\ltable.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\ltablib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\ltm.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lundump.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lutf8lib.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lvm.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\lua\lzio.c">
+      <Filter>Resource Files\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\ComponentDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\ComponentManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\Rigidbody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_broad_phase.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_chain_shape.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_circle_shape.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_collide_circle.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_collide_edge.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_collide_polygon.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_collision.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_distance.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_dynamic_tree.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_edge_shape.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_polygon_shape.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\collision\b2_time_of_impact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\common\b2_block_allocator.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\common\b2_draw.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\common\b2_math.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\common\b2_settings.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\common\b2_stack_allocator.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\common\b2_timer.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_body.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_chain_circle_contact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_chain_polygon_contact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_circle_contact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_contact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_contact_manager.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_contact_solver.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_distance_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_edge_circle_contact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_edge_polygon_contact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_fixture.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_friction_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_gear_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_island.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_motor_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_mouse_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_polygon_circle_contact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_polygon_contact.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_prismatic_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_pulley_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_revolute_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_weld_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_wheel_joint.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_world.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\dynamics\b2_world_callbacks.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\box2d\rope\b2_rope.cpp">
+      <Filter>Resource Files\box2d</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\CollisionDetector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\Raycast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\EventBus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\ParticleSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\first_party\EditorManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\imgui\imgui.cpp">
+      <Filter>Resource Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\imgui\imgui_demo.cpp">
+      <Filter>Resource Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\imgui\imgui_draw.cpp">
+      <Filter>Resource Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\imgui\imgui_impl_sdl2.cpp">
+      <Filter>Resource Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\imgui\imgui_stdlib.cpp">
+      <Filter>Resource Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\imgui\imgui_tables.cpp">
+      <Filter>Resource Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\imgui\imgui_widgets.cpp">
+      <Filter>Resource Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\third_party\include\imgui\imgui_impl_sdlrenderer2.cpp">
+      <Filter>Resource Files\imgui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\first_party\Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\Actor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\EngineUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\SceneDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\TemplateDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\ImageDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\TextDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\AudioDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lzio.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lapi.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lauxlib.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lcode.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lctype.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\ldebug.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\ldo.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lfunc.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lgc.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\ljumptab.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\llex.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\llimits.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lmem.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lobject.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lopcodes.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lopnames.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lparser.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lprefix.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lstate.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lstring.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\ltable.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\ltm.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lua.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lua.hpp">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\luaconf.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lualib.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lundump.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\lua\lvm.h">
+      <Filter>Resource Files\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\ComponentDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\ComponentManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\Rigidbody.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_common.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_contact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_contact_manager.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_distance.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_distance_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_draw.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_dynamic_tree.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_edge_shape.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_fixture.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_friction_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_gear_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_growable_stack.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_math.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_motor_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_mouse_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_polygon_shape.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_prismatic_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_pulley_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_revolute_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_rope.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_settings.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_shape.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_stack_allocator.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_time_of_impact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_time_step.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_timer.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_types.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_weld_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_wheel_joint.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_world.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_world_callbacks.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\box2d.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_chain_circle_contact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_chain_polygon_contact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_circle_contact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_contact_solver.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_edge_circle_contact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_edge_polygon_contact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_island.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_polygon_circle_contact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\dynamics\b2_polygon_contact.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_api.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_block_allocator.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_body.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_broad_phase.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_chain_shape.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_circle_shape.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\box2d\b2_collision.h">
+      <Filter>Resource Files\box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\CollisionDetector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\Raycast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\EventBus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\ParticleSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\EditorManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imconfig.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imgui.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imgui_impl_sdl2.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imgui_internal.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imgui_stdlib.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imstb_rectpack.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imstb_textedit.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imstb_truetype.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\third_party\include\imgui\imgui_impl_sdlrenderer2.h">
+      <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\third_party\include\imgui\imgui.natstepfilter">
+      <Filter>Resource Files\imgui</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="src\third_party\include\imgui\imgui.natvis">
+      <Filter>Resource Files\imgui</Filter>
+    </Natvis>
+  </ItemGroup>
+</Project>
