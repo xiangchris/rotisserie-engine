@@ -139,8 +139,6 @@ void EditorManager::ShowSceneHierarchy()
             {
                 std::vector<std::string> list = ComponentDB::GetAllComponentTypes();
 
-                std::sort(list.begin(), list.end());
-
                 for (std::string name : list)
                 {
                     if (ImGui::MenuItem(name.c_str()))
