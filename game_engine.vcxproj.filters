@@ -333,6 +333,9 @@
     <ClCompile Include="src\third_party\include\imgui\imgui_impl_sdlrenderer2.cpp">
       <Filter>Resource Files\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="src\first_party\LuaAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\first_party\Engine.h">
@@ -646,6 +649,9 @@
     </ClInclude>
     <ClInclude Include="src\third_party\include\imgui\imgui_impl_sdlrenderer2.h">
       <Filter>Resource Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\first_party\LuaAPI.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

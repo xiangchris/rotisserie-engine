@@ -137,7 +137,7 @@ void EditorManager::ShowSceneHierarchy()
             // Add component menu
             if (ImGui::BeginMenu("Add Component"))
             {
-                std::vector<std::string> list = ComponentDB::ListAllComponentTypes();
+                std::vector<std::string> list = ComponentDB::GetAllComponentTypes();
 
                 std::sort(list.begin(), list.end());
 
@@ -239,7 +239,7 @@ void EditorManager::HeaderAddActor()
 // Show component variables
 void EditorManager::ShowComponent(luabridge::LuaRef& ref, const std::string& type)
 {
-    auto kv_map = ComponentDB::GetKeyValueMap(ref);
+    auto kv_map = ComponentManager::GetKeyValueMap(ref);
     int id = 0;
     for (const auto& [key, value] : kv_map)
     {
@@ -309,9 +309,6 @@ void EditorManager::ShowPlayPauseStepButtons()
             SceneDB::stopped = paused;
             Helper::frame_number = 0;
             start_scene = SceneDB::GetCurrent();
-            ComponentDB::ResetDatabase();
-            ComponentManager::Init();
-            TemplateDB::LoadAll();
             SceneDB::RestartScene();
             SceneDB::LoadScene(start_scene);
         }
@@ -429,7 +426,7 @@ void EditorManager::ActorToJson(const Actor* a, rapidjson::Value& a_json, rapidj
         if (!c.IsEnabled())
             c_json.AddMember("enabled", false, allocator);
 
-        auto kv_map = ComponentDB::GetKeyValueMap(*c.component_ref);
+        auto kv_map = ComponentManager::GetKeyValueMap(*c.component_ref);
 
         // Get all overrides from component
         for (const auto& [key, value] : kv_map)

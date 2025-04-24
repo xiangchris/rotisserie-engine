@@ -1,5 +1,7 @@
 #include "SceneDB.h"
 
+#include "LuaAPI.h"
+
 #include "EngineUtils.h"
 #include "TemplateDB.h"
 
@@ -128,15 +130,15 @@ luabridge::LuaRef SceneDB::Find(const std::string& name)
 {
     auto it = name_to_actor.find(name);
     if (it != name_to_actor.end() && !it->second.empty())
-        return luabridge::LuaRef(lua_state, *it->second.begin());
+        return luabridge::LuaRef(LuaAPI::GetLuaState(), *it->second.begin());
 
-    return luabridge::LuaRef(lua_state);
+    return luabridge::LuaRef(LuaAPI::GetLuaState());
 }
 
 // Find all actors with name
 luabridge::LuaRef SceneDB::FindAll(const std::string& name)
 {
-    luabridge::LuaRef table = luabridge::newTable(lua_state);
+    luabridge::LuaRef table = luabridge::newTable(LuaAPI::GetLuaState());
     int i = 1;
 
     auto it = name_to_actor.find(name);
@@ -152,7 +154,7 @@ luabridge::LuaRef SceneDB::Instantiate(const std::string& actor_template_name)
 {
     Actor* new_actor = new_actors_to_add.emplace_back(new Actor(*TemplateDB::GetTemplate(actor_template_name)));
     name_to_actor[new_actor->actor_name].insert(new_actor);
-    return luabridge::LuaRef(lua_state, new_actor);
+    return luabridge::LuaRef(LuaAPI::GetLuaState(), new_actor);
 }
 
 // Mark actor for deletion, erase from name database

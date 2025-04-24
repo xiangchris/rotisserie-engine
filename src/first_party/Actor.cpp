@@ -3,6 +3,7 @@
 #include "AudioDB.h"
 #include "EngineUtils.h"
 #include "ImageDB.h"
+#include "LuaAPI.h"
 #include "Renderer.h"
 #include "SceneDB.h"
 #include "TemplateDB.h"
@@ -40,7 +41,7 @@ Actor::Actor(const rapidjson::Value& doc)
         {
             std::string type = it->value["type"].GetString();
 
-            ComponentDB::GetComponent(ref, type);
+            ComponentManager::CreateComponent(ref, type);
 
 #ifndef NDEBUG
             if (type == "SpriteRenderer")
@@ -356,7 +357,7 @@ luabridge::LuaRef Actor::GetComponentByKey(const std::string& key)
 {
     auto it = actor_components.find(key);
     if (it == actor_components.end() || !it->second.alive)
-        return luabridge::LuaRef(lua_state);
+        return luabridge::LuaRef(LuaAPI::GetLuaState());
     return *it->second.component_ref;
 }
 
@@ -367,13 +368,13 @@ luabridge::LuaRef Actor::GetComponent(const std::string& type_name)
     auto it = type_to_component_key.find(type_name);
     if (it != type_to_component_key.end() && !it->second.empty())
         return *actor_components[*it->second.begin()].component_ref;
-    return luabridge::LuaRef(lua_state);
+    return luabridge::LuaRef(LuaAPI::GetLuaState());
 }
 
 // Return LuaRef to table of all actor components of type name
 luabridge::LuaRef Actor::GetComponents(const std::string& type_name)
 {
-    luabridge::LuaRef table = luabridge::newTable(lua_state);
+    luabridge::LuaRef table = luabridge::newTable(LuaAPI::GetLuaState());
     int i = 1;
 
     auto it = type_to_component_key.find(type_name);
@@ -399,7 +400,7 @@ luabridge::LuaRef Actor::AddComponent(const std::string& type_name)
     luabridge::LuaRef& ref = *component.component_ref;
     
     // Get component_ref
-    ComponentDB::GetComponent(ref, type_name);
+    ComponentManager::CreateComponent(ref, type_name);
 
     component.has_start = ref["OnStart"].isFunction();
     component.has_update = ref["OnUpdate"].isFunction();

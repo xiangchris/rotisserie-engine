@@ -5,29 +5,26 @@
 
 #include "Helper.h"
 
-#include <thread>
+#include <string>
+#include <unordered_set>
 
 class ComponentManager
 {
 public:
-    static void Init();
+    // Create a new component of component_type
+    static void CreateComponent(luabridge::LuaRef& ref, const std::string& component_type);
 
-    static bool IsComponentTypeNative(std::string type);
+    static void EstablishInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table, const std::string& component_type);
+    static void EstablishLuaInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table);
 
-    static void Print(const std::string& message) { std::cout << message << std::endl; }
-
-    static void Quit() { exit(0); }
-    static void Sleep(const int dur_ms) { std::this_thread::sleep_for(std::chrono::milliseconds(dur_ms)); }
-    static int GetFrame() { return Helper::GetFrameNumber(); }
-    static void OpenURL(const std::string& url);
-
-    static bool GetKey(const std::string& keycode);
-    static bool GetKeyDown(const std::string& keycode);
-    static bool GetKeyUp(const std::string& keycode);
+    static std::unordered_map<std::string, luabridge::LuaRef> GetKeyValueMap(luabridge::LuaRef& table);
 
 private:
-    static void InitState();
-    static void InitFunctions();
+    template <typename T>
+    static void CreateNativeComponent(luabridge::LuaRef& ref);
+
+    template <typename T>
+    static void EstablishNativeInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table);
 };
 
 class Component

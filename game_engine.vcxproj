@@ -145,6 +145,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\first_party\LuaAPI.cpp" />
     <ClCompile Include="src\first_party\ParticleSystem.cpp" />
     <ClCompile Include="src\first_party\EventBus.cpp" />
     <ClCompile Include="src\first_party\Raycast.cpp" />
@@ -250,6 +251,7 @@
     <ClCompile Include="src\first_party\EditorManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\first_party\LuaAPI.h" />
     <ClInclude Include="src\first_party\ParticleSystem.h" />
     <ClInclude Include="src\first_party\EventBus.h" />
     <ClInclude Include="src\first_party\Raycast.h" />

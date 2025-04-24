@@ -1,5 +1,7 @@
 #include "Rigidbody.h"
 
+#include "LuaAPI.h"
+
 #include "glm/glm.hpp"
 
 
@@ -226,7 +228,7 @@ b2Vec2 Rigidbody::GetRightDirection() const
 luabridge::LuaRef Rigidbody::Raycast(b2Vec2 pos, b2Vec2 dir, float dist)
 {
     if (!world || dist == 0)
-        return luabridge::LuaRef(lua_state);
+        return luabridge::LuaRef(LuaAPI::GetLuaState());
     
     dir.Normalize();
     dir *= dist;
@@ -236,15 +238,15 @@ luabridge::LuaRef Rigidbody::Raycast(b2Vec2 pos, b2Vec2 dir, float dist)
     world->RayCast(&callback, pos, dir);
 
     if (!callback.hitresult.actor)
-        return luabridge::LuaRef(lua_state);
+        return luabridge::LuaRef(LuaAPI::GetLuaState());
 
-    return luabridge::LuaRef(lua_state, callback.hitresult);
+    return luabridge::LuaRef(LuaAPI::GetLuaState(), callback.hitresult);
 }
 
 luabridge::LuaRef Rigidbody::RaycastAll(b2Vec2 pos, b2Vec2 dir, float dist)
 {
     if (!world || dist == 0)
-        return luabridge::LuaRef(lua_state);
+        return luabridge::LuaRef(LuaAPI::GetLuaState());
 
     dir.Normalize();
     dir *= dist;
@@ -253,7 +255,7 @@ luabridge::LuaRef Rigidbody::RaycastAll(b2Vec2 pos, b2Vec2 dir, float dist)
     RaycastCallbackAll callback;
     world->RayCast(&callback, pos, dir);
 
-    luabridge::LuaRef table = luabridge::newTable(lua_state);
+    luabridge::LuaRef table = luabridge::newTable(LuaAPI::GetLuaState());
     if (callback.hitresult_list.empty())
         return table;
 

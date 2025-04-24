@@ -6,6 +6,7 @@
 #include "EventBus.h"
 #include "ImageDB.h"
 #include "Input.h"
+#include "LuaAPI.h"
 #include "SceneDB.h"
 #include "Renderer.h"
 #include "Rigidbody.h"
@@ -67,7 +68,7 @@ void Engine::LoadInitialSettings()
     ImageDB::Init();
     AudioDB::Init();
     TextDB::Init();
-    ComponentManager::Init();
+    LuaAPI::Init();
 
 #ifndef NDEBUG
     TemplateDB::LoadAll();

@@ -4,38 +4,35 @@
 #include "lua/lua.hpp"
 #include "LuaBridge/LuaBridge.h"
 
+#include <string>
 #include <memory>
-
-extern inline lua_State* lua_state = nullptr;
+#include <unordered_set>
+#include <vector>
 
 class ComponentDB
 {
 public:
 	static void Init();
+	static luabridge::LuaRef* GetLuaComponent(const std::string& component_type);
 
-	static void GetComponent(luabridge::LuaRef& ref, const std::string& component_type);
-	
-	template <typename T>
-	static void CreateNativeComponent(luabridge::LuaRef& ref)
-	{
-		T* obj = new T();
-		ref = luabridge::LuaRef(lua_state, obj);
-	}
-
-	template <typename T>
-	static void CreateCpp(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table)
-	{
-		T* obj_parent = parent_table.cast<T*>();
-		instance_table = luabridge::LuaRef(lua_state, new T(*obj_parent));
-	}
-
-	static void EstablishInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table);
-	static std::vector<std::string> ListAllComponentTypes();
-
-	static std::unordered_map<std::string, luabridge::LuaRef> GetKeyValueMap(luabridge::LuaRef& table);
+	static bool IsComponentTypeNative(std::string type);
+	static std::vector<std::string> GetAllComponentTypes();
 
 private:
 	static inline std::unordered_map<std::string, std::unique_ptr<luabridge::LuaRef>> loaded_components;
+	static inline std::vector<std::string> components_types;
+	
+	static inline const std::vector<std::string> native_types = {
+	"Rigidbody",
+	"ParticleSystem",
+	"SpriteRenderer"
+	};
+
+	static inline const std::unordered_set<std::string> native_types_set = {
+	"Rigidbody",
+	"ParticleSystem",
+	"SpriteRenderer"
+	};
 };
 
 #endif
