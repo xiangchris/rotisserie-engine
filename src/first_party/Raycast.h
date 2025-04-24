@@ -2,6 +2,7 @@
 #define RAYCAST_H
 
 #include "Actor.h"
+#include "Raycast.h"
 
 #include "box2d/box2d.h"
 

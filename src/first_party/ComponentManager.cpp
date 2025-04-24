@@ -1,5 +1,7 @@
 #include "ComponentManager.h"
 
+#include "ComponentDB.h"
+
 #include "Rigidbody.h"
 #include "ParticleSystem.h"
 
@@ -76,9 +78,13 @@ std::vector<std::string> ComponentManager::GetKeyVector(const std::string& compo
     }
     else
     {
-        for (luabridge::Iterator it(*ComponentDB::GetLuaComponent(component_type)); !it.isNil(); ++it)
+        if (component_type_to_keys.find(component_type) != component_type_to_keys.end())
+            return component_type_to_keys[component_type];
+        else
         {
-            result.push_back(it.key().tostring());
+            for (luabridge::Iterator it(*ComponentDB::GetLuaComponent(component_type)); !it.isNil(); ++it)
+                result.push_back(it.key().tostring());
+            component_type_to_keys[component_type] = result;
         }
     }
 

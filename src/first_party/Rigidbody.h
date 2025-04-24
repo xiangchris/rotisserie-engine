@@ -2,9 +2,7 @@
 #define RIGIDBODY_H
 
 #include "Actor.h"
-
 #include "CollisionDetector.h"
-#include "Raycast.h"
 
 #include <string>
 

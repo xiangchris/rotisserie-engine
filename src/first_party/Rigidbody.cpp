@@ -1,6 +1,7 @@
 #include "Rigidbody.h"
 
 #include "LuaAPI.h"
+#include "Raycast.h"
 
 #include "glm/glm.hpp"
 

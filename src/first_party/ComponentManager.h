@@ -1,12 +1,13 @@
 #ifndef COMPONENT_MANAGER_H
 #define COMPONENT_MANAGER_H
 
-#include "ComponentDB.h"
-
-#include "Helper.h"
+#include "lua/lua.hpp"
+#include "LuaBridge/LuaBridge.h"
 
 #include <string>
 #include <unordered_set>
+#include <unordered_map>
+#include <memory>
 
 class ComponentManager
 {
@@ -25,6 +26,8 @@ private:
 
     template <typename T>
     static void EstablishNativeInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table);
+
+    static inline std::unordered_map<std::string, std::vector<std::string>> component_type_to_keys;
 };
 
 class Component
