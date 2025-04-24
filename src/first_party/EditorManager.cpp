@@ -1,12 +1,10 @@
 #include "EditorManager.h"
 
 #include "ComponentDB.h"
+#include "EngineUtils.h"
 #include "Renderer.h"
 #include "SceneDB.h"
 #include "TemplateDB.h"
-
-#include "rapidjson/filewritestream.h"
-#include "rapidjson/prettywriter.h"
 
 // Return singleton pointer to editor manager
 EditorManager* EditorManager::Get()
@@ -61,6 +59,7 @@ void EditorManager::ShowEditor()
     ShowSceneHierarchy();
     ShowSceneMenu();
     ShowPlayPauseStepButtons();
+    ImGui::ShowDemoWindow();
 
     // Render the ImGui frame
     ImGui::Render();
@@ -189,7 +188,7 @@ void EditorManager::ActorSaveToTemplateButton(Actor* actor)
 
         ActorToJson(actor, doc, allocator);
 
-        WriteJsonFile(path, doc);
+        EngineUtils::WriteJsonFile(path, doc);
 
         TemplateDB::GetTemplate(actor->actor_name);
 
@@ -240,13 +239,11 @@ void EditorManager::HeaderAddActor()
 // Show component variables
 void EditorManager::ShowComponent(luabridge::LuaRef& ref, const std::string& type)
 {
-    std::vector<std::string> keys = ComponentDB::GetKeys(type);
+    auto kv_map = ComponentDB::GetKeyValueMap(ref);
     int id = 0;
-    for (const auto& key : keys)
+    for (const auto& [key, value] : kv_map)
     {
-        luabridge::LuaRef value = ref[key];
-
-        if (!value.isBool() && !value.isNumber() && !value.isString())
+        if (!value.isBool() && !value.isNumber() && !value.isString() || key == "key")
             continue;
 
         std::string label = key + ":";
@@ -387,7 +384,7 @@ void EditorManager::SaveScene()
     std::string path = "resources/scenes/" + SceneDB::GetCurrent() + ".scene";
     
     AddSceneActorsToDocument(doc);
-    WriteJsonFile(path, doc);
+    EngineUtils::WriteJsonFile(path, doc);
 }
 
 void EditorManager::AddSceneActorsToDocument(rapidjson::Document& doc)
@@ -411,32 +408,6 @@ void EditorManager::AddSceneActorsToDocument(rapidjson::Document& doc)
     doc.AddMember("actors", actors, allocator);
 }
 
-// Write a json document to file. Overwrites existing files
-void EditorManager::WriteJsonFile(const std::string& path, rapidjson::Document& doc)
-{
-    // Create a file stream to write to a file
-    FILE* file_pointer = nullptr;
-#ifdef _WIN32
-    fopen_s(&file_pointer, path.c_str(), "w");
-#else
-    file_pointer = fopen(path.c_str(), "rb");
-#endif
-
-    if (!file_pointer) {
-        std::cerr << "error failed to open file [" << path << "]" << std::endl;
-        exit(0);
-    }
-
-    const size_t buffer_size = 65536;
-    char* buffer = new char[buffer_size];
-    rapidjson::FileWriteStream stream(file_pointer, buffer, buffer_size);
-
-    rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(stream);
-    doc.Accept(writer);
-
-    std::fclose(file_pointer);
-}
-
 void EditorManager::ActorToJson(const Actor* a, rapidjson::Value& a_json, rapidjson::Document::AllocatorType& allocator)
 {
     // Component list is a json component
@@ -458,45 +429,26 @@ void EditorManager::ActorToJson(const Actor* a, rapidjson::Value& a_json, rapidj
         if (!c.IsEnabled())
             c_json.AddMember("enabled", false, allocator);
 
-        if (c.type == "Rigidbody" || c.type == "ParticleSystem")
+        auto kv_map = ComponentDB::GetKeyValueMap(*c.component_ref);
+
+        // Get all overrides from component
+        for (const auto& [key, value] : kv_map)
         {
-            std::vector<std::string> keys = ComponentDB::GetKeys(c.type);
-            for (const std::string& it_key : keys)
-            {
-                luabridge::LuaRef it_val = (*c.component_ref)[it_key];
+            if (value.isFunction() || value.isUserdata())
+                continue;
 
-                rapidjson::Value key_v(it_key.c_str(), allocator);
-                if (it_val.isBool())
-                    c_json.AddMember(key_v, it_val.cast<bool>(), allocator);
-                else if (it_val.isNumber())
-                    c_json.AddMember(key_v, it_val.cast<float>(), allocator);
-                else if (it_val.isString())
-                    c_json.AddMember(key_v, rapidjson::Value(it_val.tostring().c_str(), allocator), allocator);
-            }
+            if (key == "key" || key == "type" || key == "enabled")
+                continue;
+
+            rapidjson::Value key_v(key.c_str(), allocator);
+            if (value.isBool())
+                c_json.AddMember(key_v, value.cast<bool>(), allocator);
+            else if (value.isNumber())
+                c_json.AddMember(key_v, value.cast<float>(), allocator);
+            else if (value.isString())
+                c_json.AddMember(key_v, rapidjson::Value(value.tostring().c_str(), allocator), allocator);
         }
-        else
-        {
-            // Get all overrides from component
-            for (luabridge::Iterator it(*c.component_ref); !it.isNil(); ++it)
-            {
-                std::string it_key = it.key().tostring();
-                luabridge::LuaRef it_val = it.value();
 
-                if (it_val.isFunction() || it_val.isUserdata())
-                    continue;
-
-                if (it_key == "key" || it_key == "type" || it_key == "enabled")
-                    continue;
-
-                rapidjson::Value key_v(it_key.c_str(), allocator);
-                if (it_val.isBool())
-                    c_json.AddMember(key_v, it_val.cast<bool>(), allocator);
-                else if (it_val.isNumber())
-                    c_json.AddMember(key_v, it_val.cast<float>(), allocator);
-                else if (it_val.isString())
-                    c_json.AddMember(key_v, rapidjson::Value(it_val.tostring().c_str(), allocator), allocator);
-            }
-        }
         rapidjson::Value key_c_json((*c.component_ref)["key"].tostring().c_str(), allocator);
         components.AddMember(key_c_json, c_json, allocator);
     }
@@ -523,7 +475,7 @@ void EditorManager::CreateScene(const std::string& scene_name)
     doc.AddMember("actors", actors, allocator);
 
     AddSceneActorsToDocument(doc);
-    WriteJsonFile(path, doc);
+    EngineUtils::WriteJsonFile(path, doc);
 }
 
 void EditorManager::DisplayScenes()
