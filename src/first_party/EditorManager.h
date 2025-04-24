@@ -43,7 +43,6 @@ private:
     void DisplayScenes();
     void SaveScene();
     void AddSceneActorsToDocument(rapidjson::Document& doc);
-    void WriteJsonFile(const std::string& path, rapidjson::Document& doc);
 
     void ActorToJson(const Actor* a, rapidjson::Value& a_json, rapidjson::Document::AllocatorType& allocator);
 

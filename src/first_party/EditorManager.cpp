@@ -237,10 +237,12 @@ void EditorManager::HeaderAddActor()
 // Show component variables
 void EditorManager::ShowComponent(luabridge::LuaRef& ref, const std::string& type)
 {
-    auto kv_map = ComponentManager::GetKeyValueMap(ref);
+    auto key_list = ComponentManager::GetKeyVector(type);
     int id = 0;
-    for (const auto& [key, value] : kv_map)
+    for (const auto& key : key_list)
     {
+        luabridge::LuaRef value = ref[key];
+
         if (!value.isBool() && !value.isNumber() && !value.isString() || key == "key")
             continue;
 
@@ -424,11 +426,12 @@ void EditorManager::ActorToJson(const Actor* a, rapidjson::Value& a_json, rapidj
         if (!c.IsEnabled())
             c_json.AddMember("enabled", false, allocator);
 
-        auto kv_map = ComponentManager::GetKeyValueMap(*c.component_ref);
-
         // Get all overrides from component
-        for (const auto& [key, value] : kv_map)
+        for (luabridge::Iterator it(*c.component_ref); !it.isNil(); ++it)
         {
+            std::string key = it.key().tostring();
+            luabridge::LuaRef value = it.value();
+
             if (value.isFunction() || value.isUserdata())
                 continue;
 

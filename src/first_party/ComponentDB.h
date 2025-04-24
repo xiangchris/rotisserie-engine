@@ -25,13 +25,13 @@ private:
 	static inline const std::vector<std::string> native_types = {
 	"Rigidbody",
 	"ParticleSystem",
-	"SpriteRenderer"
+	//"SpriteRenderer"
 	};
 
 	static inline const std::unordered_set<std::string> native_types_set = {
 	"Rigidbody",
 	"ParticleSystem",
-	"SpriteRenderer"
+	//"SpriteRenderer"
 	};
 };
 

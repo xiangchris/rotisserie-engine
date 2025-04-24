@@ -17,7 +17,7 @@ public:
     static void EstablishInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table, const std::string& component_type);
     static void EstablishLuaInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table);
 
-    static std::unordered_map<std::string, luabridge::LuaRef> GetKeyValueMap(luabridge::LuaRef& table);
+    static std::vector<std::string> GetKeyVector(const std::string& component_type);
 
 private:
     template <typename T>

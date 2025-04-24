@@ -67,43 +67,21 @@ inline void ComponentManager::EstablishNativeInheritance(luabridge::LuaRef& inst
     instance_table = luabridge::LuaRef(LuaAPI::GetLuaState(), new T(*obj_parent));
 }
 
-std::unordered_map<std::string, luabridge::LuaRef> ComponentManager::GetKeyValueMap(luabridge::LuaRef& ref) {
-    std::unordered_map<std::string, luabridge::LuaRef> result;
-    if (ref.isNil()) { return result; }
-
-    auto L = ref.state();
-    push(L, ref); // push table
-
-    // Check if table has a metatable with __index
-    if (lua_getmetatable(L, -1)) {  // pushes metatable
-        lua_pushstring(L, "__index"); // push "__index"
-        lua_rawget(L, -2);            // get metatable.__index, pops "__index"
-
-        if (lua_istable(L, -1)) {
-            // We found a metatable with __index table, recursively get its properties
-            luabridge::LuaRef indexTable = luabridge::LuaRef::fromStack(L, -1);
-
-            // Recursively get properties from the __index table
-            auto inheritedProps = GetKeyValueMap(indexTable);
-            result.insert(inheritedProps.begin(), inheritedProps.end());
-        }
-
-        lua_pop(L, 2); // pop metatable.__index and metatable
-    }
-
-    // Now get direct properties (will override any inherited ones with the same name)
-    push(L, ref); // make sure table is at top of stack
-
-
-    lua_pushnil(L);  // push nil, so lua_next removes it from stack and puts (k, v) on stack
-    while (lua_next(L, -2) != 0) // -2, because we have table at -1
+std::vector<std::string> ComponentManager::GetKeyVector(const std::string& component_type) {
+    std::vector<std::string> result;
+    
+    if (ComponentDB::IsComponentTypeNative(component_type))
     {
-        if (lua_isstring(L, -2)) // only store stuff with string keys
-            result.emplace(lua_tostring(L, -2), luabridge::LuaRef::fromStack(L, -1));
-        lua_pop(L, 1); // remove value, keep key for lua_next
+
+    }
+    else
+    {
+        for (luabridge::Iterator it(*ComponentDB::GetLuaComponent(component_type)); !it.isNil(); ++it)
+        {
+            result.push_back(it.key().tostring());
+        }
     }
 
-    lua_pop(L, 1); // pop table
     return result;
 }
 
