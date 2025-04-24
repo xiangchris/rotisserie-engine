@@ -31,60 +31,44 @@ void ComponentDB::Init()
     }
 }
 
-std::vector<std::string>& ComponentDB::GetKeys(const std::string& component_type)
-{
-    auto it = loaded_components.find(component_type);
-    if (it != loaded_components.end())
-    {
-        return FindKeys(*it->second.get());
-    }
-    else
-    {
-        return FindKeysCpp(component_type);
-    }
-}
+std::unordered_map<std::string, luabridge::LuaRef> ComponentDB::GetKeyValueMap(luabridge::LuaRef& ref) {
+    std::unordered_map<std::string, luabridge::LuaRef> result;
+    if (ref.isNil()) { return result; }
 
-std::vector<std::string>& ComponentDB::FindKeys(luabridge::LuaRef ref)
-{
-    static std::vector<std::string> keys;
-    keys.clear();
+    auto L = ref.state();
+    push(L, ref); // push table
 
-    if (!ref.isTable())
-        return keys;
+    // Check if table has a metatable with __index
+    if (lua_getmetatable(L, -1)) {  // pushes metatable
+        lua_pushstring(L, "__index"); // push "__index"
+        lua_rawget(L, -2);            // get metatable.__index, pops "__index"
 
-    for (luabridge::Iterator it(ref); !it.isNil(); ++it)
-    {
-        keys.push_back(it.key().cast<std::string>());
+        if (lua_istable(L, -1)) {
+            // We found a metatable with __index table, recursively get its properties
+            luabridge::LuaRef indexTable = luabridge::LuaRef::fromStack(L, -1);
+
+            // Recursively get properties from the __index table
+            auto inheritedProps = GetKeyValueMap(indexTable);
+            result.insert(inheritedProps.begin(), inheritedProps.end());
+        }
+
+        lua_pop(L, 2); // pop metatable.__index and metatable
     }
 
-    std::sort(keys.begin(), keys.end());
+    // Now get direct properties (will override any inherited ones with the same name)
+    push(L, ref); // make sure table is at top of stack
 
-    return keys;
-}
 
-std::vector<std::string>& ComponentDB::FindKeysCpp(const std::string& component_type)
-{
-    static std::vector<std::string> rigidbody = {
-    "x", "y", "body_type", "precise", "gravity_scale", 
-    "density", "angular_friction", "rotation", "has_collider",
-    "collider_type", "width", "height", "radius", "friction", "bounciness",
-    "has_trigger", "trigger_type", "trigger_width", "trigger_height", "trigger_radius"
-    };
-    static std::vector<std::string> particle_system = {
-    "x", "y", "frames_between_bursts", "burst_quantity", "start_scale_min",
-    "start_scale_max", "rotation_min", "rotation_max", "start_color_r",
-    "start_color_g", "start_color_b", "start_color_a", "emit_radius_min",
-    "emit_radius_max", "emit_angle_min", "emit_angle_max", "image",
-    "sorting_order", "duration_frames", "start_speed_min", "start_speed_max",
-    "rotation_speed_min", "rotation_speed_max", "gravity_scale_x",
-    "gravity_scale_y", "drag_factor", "angular_drag_factor", "end_scale",
-    "end_color_r", "end_color_g", "end_color_b", "end_color_a"
-    };
+    lua_pushnil(L);  // push nil, so lua_next removes it from stack and puts (k, v) on stack
+    while (lua_next(L, -2) != 0) // -2, because we have table at -1
+    {
+        if (lua_isstring(L, -2)) // only store stuff with string keys
+            result.emplace(lua_tostring(L, -2), luabridge::LuaRef::fromStack(L, -1));
+        lua_pop(L, 1); // remove value, keep key for lua_next
+    }
 
-    if (component_type == "Rigidbody")
-        return rigidbody;
-    else
-        return particle_system;
+    lua_pop(L, 1); // pop table
+    return result;
 }
 
 // Create a new component of component_type

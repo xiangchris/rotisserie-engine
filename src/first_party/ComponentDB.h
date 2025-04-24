@@ -12,7 +12,7 @@ class ComponentDB
 {
 public:
 	static void Init();
-	static std::vector<std::string>& GetKeys(const std::string& component_type);
+
 	static void GetComponent(luabridge::LuaRef& ref, const std::string& component_type);
 	
 	template <typename T>
@@ -32,12 +32,10 @@ public:
 	static void EstablishInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table);
 	static std::vector<std::string> ListAllComponentTypes();
 
-	static void ResetDatabase() { loaded_components.clear(); }
+	static std::unordered_map<std::string, luabridge::LuaRef> GetKeyValueMap(luabridge::LuaRef& table);
 
 private:
 	static inline std::unordered_map<std::string, std::unique_ptr<luabridge::LuaRef>> loaded_components;
-	static std::vector<std::string>& FindKeys(luabridge::LuaRef ref);
-	static std::vector<std::string>& FindKeysCpp(const std::string& component_type);
 };
 
 #endif
