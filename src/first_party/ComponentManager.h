@@ -12,6 +12,8 @@ class ComponentManager
 public:
     static void Init();
 
+    static bool IsComponentTypeNative(std::string type);
+
     static void Print(const std::string& message) { std::cout << message << std::endl; }
 
     static void Quit() { exit(0); }

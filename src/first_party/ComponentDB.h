@@ -16,7 +16,7 @@ public:
 	static void GetComponent(luabridge::LuaRef& ref, const std::string& component_type);
 	
 	template <typename T>
-	static void CreateCpp(luabridge::LuaRef& ref)
+	static void CreateNativeComponent(luabridge::LuaRef& ref)
 	{
 		T* obj = new T();
 		ref = luabridge::LuaRef(lua_state, obj);

@@ -13,6 +13,7 @@
 #include "KeycodeToScancode.h"
 
 #include <cstdlib>
+#include <unordered_set>
 
 
 // Initialize lua_state, functions, and components
@@ -21,6 +22,17 @@ void ComponentManager::Init()
     InitState();
     InitFunctions();
     ComponentDB::Init();
+}
+
+bool ComponentManager::IsComponentTypeNative(std::string type)
+{
+    static const std::unordered_set<std::string> native_types = {
+        "Rigidbody",
+        "ParticleSystem",
+        "SpriteRenderer"
+    };
+
+    return native_types.find(type) != native_types.end();
 }
 
 // Initalize lua_state
