@@ -24,7 +24,7 @@ void Renderer::Init(const std::string& game_title)
     window_center = window_size * 0.5f * inverse_zoom;
     window_box = window_size * inverse_zoom * 1.1f;
 
-    window = Helper::SDL_CreateWindow(game_title.c_str(), 0, 30, static_cast<int>(window_size.x), static_cast<int>(window_size.y), SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+    window = Helper::SDL_CreateWindow(game_title.c_str(), 0, 30, static_cast<int>(window_size.x), static_cast<int>(window_size.y), SDL_WINDOW_SHOWN);
     renderer = Helper::SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 }
 
@@ -119,8 +119,10 @@ void Renderer::RenderAndClearImageDrawRequests()
         request.rect.x = (request.rect.x - camera_position.x) * PIXELS_PER_METER + window_center.x - pivot_point.x;
         request.rect.y = (request.rect.y - camera_position.y) * PIXELS_PER_METER + window_center.y - pivot_point.y;
 
+#ifdef NDEBUG
         if (request.rect.x + request.rect.w < -50.0f || request.rect.y + request.rect.h < -50.0f || request.rect.x > window_box.x || request.rect.y > window_box.y)
             continue;
+#endif
 
         int flip_mode = SDL_FLIP_NONE;
         if (request.scale_x < 0.0f)
