@@ -69,12 +69,12 @@ inline void ComponentManager::EstablishNativeInheritance(luabridge::LuaRef& inst
     instance_table = luabridge::LuaRef(LuaAPI::GetLuaState(), new T(*obj_parent));
 }
 
-std::vector<std::string> ComponentManager::GetKeyVector(const std::string& component_type) {
+const std::vector<std::string> ComponentManager::GetKeyVector(const std::string& component_type) {
     std::vector<std::string> result;
     
     if (ComponentDB::IsComponentTypeNative(component_type))
     {
-
+        return ComponentDB::GetNativeKeys(component_type);
     }
     else
     {

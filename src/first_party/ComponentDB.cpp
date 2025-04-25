@@ -59,6 +59,16 @@ std::vector<std::string> ComponentDB::GetAllComponentTypes()
     return list;
 }
 
+const std::vector<std::string>& ComponentDB::GetNativeKeys(const std::string& component_type)
+{
+    if (component_type == "Rigidbody")
+        return rigidbody;
+    if (component_type == "ParticleSystem")
+        return particle_system;
+
+    return std::vector<std::string>();
+}
+
 
 bool ComponentDB::IsComponentTypeNative(std::string type)
 {

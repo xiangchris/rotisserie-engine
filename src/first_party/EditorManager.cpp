@@ -237,7 +237,7 @@ void EditorManager::HeaderAddActor()
 // Show component variables
 void EditorManager::ShowComponent(luabridge::LuaRef& ref, const std::string& type)
 {
-    auto key_list = ComponentManager::GetKeyVector(type);
+    const auto key_list = ComponentManager::GetKeyVector(type);
     int id = 0;
     for (const auto& key : key_list)
     {
@@ -426,25 +426,52 @@ void EditorManager::ActorToJson(const Actor* a, rapidjson::Value& a_json, rapidj
         if (!c.IsEnabled())
             c_json.AddMember("enabled", false, allocator);
 
-        // Get all overrides from component
-        for (luabridge::Iterator it(*c.component_ref); !it.isNil(); ++it)
+        if (ComponentDB::IsComponentTypeNative(c.type))
         {
-            std::string key = it.key().tostring();
-            luabridge::LuaRef value = it.value();
+            const auto& native_keys = ComponentDB::GetNativeKeys(c.type);
+            for (const auto& key : native_keys)
+            {
+                luabridge::LuaRef value = (*c.component_ref)[key];
 
-            if (value.isFunction() || value.isUserdata())
-                continue;
+                if (value.isFunction() || value.isUserdata())
+                    continue;
 
-            if (key == "key" || key == "type" || key == "enabled")
-                continue;
+                if (key == "key" || key == "type" || key == "enabled")
+                    continue;
 
-            rapidjson::Value key_v(key.c_str(), allocator);
-            if (value.isBool())
-                c_json.AddMember(key_v, value.cast<bool>(), allocator);
-            else if (value.isNumber())
-                c_json.AddMember(key_v, value.cast<float>(), allocator);
-            else if (value.isString())
-                c_json.AddMember(key_v, rapidjson::Value(value.tostring().c_str(), allocator), allocator);
+                rapidjson::Value key_v(key.c_str(), allocator);
+                if (value.isBool())
+                    c_json.AddMember(key_v, value.cast<bool>(), allocator);
+                else if (value.isNumber())
+                    c_json.AddMember(key_v, value.cast<float>(), allocator);
+                else if (value.isString())
+                    c_json.AddMember(key_v, rapidjson::Value(value.tostring().c_str(), allocator), allocator);
+                else
+                    std::cout << "erm";
+            }
+        }
+        else
+        {
+            // Get all overrides from component
+            for (luabridge::Iterator it(*c.component_ref); !it.isNil(); ++it)
+            {
+                std::string key = it.key().tostring();
+                luabridge::LuaRef value = it.value();
+
+                if (value.isFunction() || value.isUserdata())
+                    continue;
+
+                if (key == "key" || key == "type" || key == "enabled")
+                    continue;
+
+                rapidjson::Value key_v(key.c_str(), allocator);
+                if (value.isBool())
+                    c_json.AddMember(key_v, value.cast<bool>(), allocator);
+                else if (value.isNumber())
+                    c_json.AddMember(key_v, value.cast<float>(), allocator);
+                else if (value.isString())
+                    c_json.AddMember(key_v, rapidjson::Value(value.tostring().c_str(), allocator), allocator);
+            }
         }
 
         rapidjson::Value key_c_json((*c.component_ref)["key"].tostring().c_str(), allocator);

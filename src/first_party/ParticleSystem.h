@@ -44,7 +44,7 @@ public:
     float gravity_scale_y = 0.0f;
     float drag_factor = 1.0f;
     float angular_drag_factor = 1.0f;
-    float end_scale = std::nanf("");
+    float end_scale = -1.0f;
     int end_color_r = -1;
     int end_color_g = -1;
     int end_color_b = -1;

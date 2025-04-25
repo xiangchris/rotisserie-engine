@@ -15,7 +15,7 @@ void ParticleSystem::OnStart()
     if (duration_frames < 1)
         duration_frames = 1;
 
-    do_end_scale = !std::isnan(end_scale);
+    do_end_scale = end_scale > -1;
     do_tint_r = end_color_r > -1;
     do_tint_g = end_color_g > -1;
     do_tint_b = end_color_b > -1;
