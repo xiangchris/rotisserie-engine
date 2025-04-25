@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game_engine", "game_engine.vcxproj", "{45E7B3D9-C908-4333-B305-1FA4E037C1FB}"
 EndProject
@@ -9,6 +9,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		EngineDebug|x64 = EngineDebug|x64
+		EngineDebug|x86 = EngineDebug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -17,6 +19,10 @@ Global
 		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.Debug|x64.Build.0 = Debug|x64
 		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.Debug|x86.ActiveCfg = Debug|Win32
 		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.Debug|x86.Build.0 = Debug|Win32
+		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.EngineDebug|x64.ActiveCfg = EngineDebug|x64
+		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.EngineDebug|x64.Build.0 = EngineDebug|x64
+		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.EngineDebug|x86.ActiveCfg = EngineDebug|Win32
+		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.EngineDebug|x86.Build.0 = EngineDebug|Win32
 		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.Release|x64.ActiveCfg = Release|x64
 		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.Release|x64.Build.0 = Release|x64
 		{45E7B3D9-C908-4333-B305-1FA4E037C1FB}.Release|x86.ActiveCfg = Release|Win32
@@ -24,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9F1D9B4-A4ED-44FD-B1BA-2C26F5478E6C}
 	EndGlobalSection
 EndGlobal

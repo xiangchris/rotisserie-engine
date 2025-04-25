@@ -116,7 +116,7 @@ Component& Component::operator=(const Component& parent_component)
     luabridge::LuaRef& ref = *component_ref;
     type = parent_component.type;
     // Establish inheritance to base component
-    ComponentManager::EstablishLuaInheritance(ref, *parent_component.component_ref);
+    ComponentManager::EstablishInheritance(ref, *parent_component.component_ref, type);
 
     has_start = parent_component.has_start;
     has_update = parent_component.has_update;

@@ -57,9 +57,9 @@ void EditorManager::ShowEditor()
 
     // Windows to show
     ShowSceneHierarchy();
-    ShowSceneMenu();
+    //ShowSceneMenu();
     ShowPlayPauseStepButtons();
-    ImGui::ShowDemoWindow();
+    //ImGui::ShowDemoWindow();
 
     // Render the ImGui frame
     ImGui::Render();
